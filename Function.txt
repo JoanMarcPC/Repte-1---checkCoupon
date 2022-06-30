@@ -1,0 +1,13 @@
+	public static boolean checkCoupon(String enteredCode, String correctCode, String currentDate,
+			String expirationDate) {
+		
+		if (enteredCode.equals(correctCode)) {
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM d, yyyy", Locale.ENGLISH);
+			LocalDate currentDate2 = LocalDate.parse(currentDate, formatter);
+			LocalDate expirationDate2 = LocalDate.parse(expirationDate, formatter);
+
+			return expirationDate2.compareTo(currentDate2) >= 0;
+		} else {
+			return false;
+		}
+	}
